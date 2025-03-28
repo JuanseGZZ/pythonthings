@@ -1,0 +1,15 @@
+dependecinas
+pip install celery, redis
+
+#atienede todo menos colas
+comando     nombre archivo      tipo                        nombre worker           necesario en windows
+celery -A   tasks               worker --loglevel=info      --hostname=worker1@%h --pool=solo
+
+celery -A tasks worker --loglevel=info --hostname=worker1@%h --pool=solo
+celery -A tasks worker --loglevel=info --hostname=worker2@%h --pool=solo
+
+#atiende colas espesificas
+celery -A tasks worker --loglevel=info --queues=default,loquesea --hostname=worker3@%h --pool=solo
+
+puedo hacer los que yo quiera poniendolos en distintos cmd
+
